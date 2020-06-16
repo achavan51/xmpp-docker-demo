@@ -1,0 +1,49 @@
+login:
+  handler: src/api/Auth/Controllers/AuthController.login
+  events:
+    - http:
+        path: login_user
+        method: post
+        cors: true
+signUp:
+  handler: src/api/Auth/Controllers/AuthController.signUp
+  events:
+    - http:
+        path: signup_user
+        method: post
+        cors: true
+# verifyPhone:
+#   handler: src/api/Auth/Controllers/AuthController.verifyPhone
+#   events:
+#     - http:
+#         path: verify_phone
+#         method: post
+#         cors: true
+# verifyEmail:
+#   handler: src/api/Auth/Controllers/AuthController.verifyEmail
+#   events:
+#     - http:
+#         path: verify_email
+#         method: post
+#         cors: true
+# sendOtp:
+#   handler: src/api/Auth/Controllers/AuthController.sendOtp
+#   events:
+#     - http:
+#         path: send_otp
+#         method: post
+#         cors: true
+# sendMail:
+#   handler: src/api/Auth/Controllers/AuthController.sendMail
+#   events:
+#     - http:
+#         path: send_mail
+#         method: get
+#         cors: true
+# changePassword:
+#   handler: src/api/Auth/Controllers/AuthController.changePassword
+#   events:
+#     - http:
+#         path: change_password
+#         method: post
+#         cors: true

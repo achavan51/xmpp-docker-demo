@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "amazon-cognito-identity-js": "^4.2.1",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0",
+    "serverless-plugin-split-stacks": "^1.9.3",
+    "serverless": "^1.70.1",
+    "uuid": "^8.1.0",
+    "zlib": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -9,7 +9,6 @@
     "node-fetch": "^2.6.0",
     "serverless-plugin-split-stacks": "^1.9.3",
     "serverless": "^1.70.1",
-    "uuid": "^8.1.0",
     "zlib": "^1.0.5"
   },
   "devDependencies": {},

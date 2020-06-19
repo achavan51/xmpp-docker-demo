@@ -1,0 +1,60 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  transition: 0.3s;
+  margin: 0 auto;
+  margin-top: 120px;
+  float: none;
+  margin-bottom: 10px;
+  text-align: left;
+  background: linear-gradient(180deg, #f8f5f5 0%, #ffffff 100%);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.googlebutton {
+  width: inherit !important;
+}
+
+div form {
+  p {
+    color: #8a7281;
+  }
+  h3 {
+    color: #72425f;
+  }
+  button {
+    background: #20a7f3 !important;
+    color: white !important;
+    font-size: 16px !important;
+    border: 1px solid #0090cd !important;
+  }
+}
+form {
+  padding: 30px;
+}
+
+body {
+  background: radial-gradient(
+    195.29% 195.35% at 50.34% 110.94%,
+    rgba(230, 53, 201, 0.9) 0%,
+    rgba(255, 139, 0, 0.9) 89.03%
+  );
+}
+h4 {
+  color: #72425f;
+}
+.anchor {
+  color: #ff7a00;
+  text-align: center !important;
+}
+.social {
+  padding: 30px;
+}
+.error {
+  text-align: center;
+  color: #f1399f;
+  padding: 0;
+}

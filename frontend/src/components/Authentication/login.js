@@ -78,7 +78,7 @@ class Login extends Component {
                     <input
                       className="form-control"
                       placeholder="Password"
-                      type="text"
+                      type="password"
                       name="password"
                       value={password}
                       onChange={this.changeHandler}

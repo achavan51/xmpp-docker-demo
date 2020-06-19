@@ -45,7 +45,14 @@ class Router extends Component {
               </Suspense>
             )}
           />
-          <Route component={NotFound} />
+          <Route
+            path="/NotFound"
+            render={(props) => (
+              <Suspense fallback={<Spinner />}>
+                <NotFound {...props} />
+              </Suspense>
+            )}
+          />
         </Switch>
       </BrowserRouter>
     );

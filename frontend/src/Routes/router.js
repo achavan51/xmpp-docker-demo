@@ -3,7 +3,6 @@ import React, { Component, Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AuthRoute from "./AuthRoute";
 import Spinner from "../components/spinner/spinner";
-// Main Layout
 const SignUp = lazy(() => import("../components/Authentication/signup"));
 const Login = lazy(() => import("../components/Authentication/login"));
 const Dashboard = lazy(() => import("../components/DashBoard/dashboard"));
@@ -12,7 +11,6 @@ const NotFound = lazy(() => import("../views/NotFound"));
 class Router extends Component {
   render() {
     return (
-      // Set the directory path if you are deplying in sub-folder
       <BrowserRouter basename="/">
         <Switch>
           {/* <AuthRoute
@@ -45,14 +43,7 @@ class Router extends Component {
               </Suspense>
             )}
           />
-          <Route
-            path="/NotFound"
-            render={(props) => (
-              <Suspense fallback={<Spinner />}>
-                <NotFound {...props} />
-              </Suspense>
-            )}
-          />
+          <Route path="*" exact={true} component={NotFound} />
         </Switch>
       </BrowserRouter>
     );

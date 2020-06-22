@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../Styles/signup.scss";
 import { Auth, Hub } from "aws-amplify";
 import GoogleButton from "react-google-button";
+import Logo from "../../assets/img/logo.png";
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -78,12 +79,16 @@ class SignUp extends Component {
   render() {
     const { email, password, confirmationCode, message } = this.state;
     return (
-      <div className="row">
-        <div className="col-md-3" />
-        <div className="col-md-6 col-sm-12">
+      <div className="row" style={{ margin: "0" }}>
+        <div className="col-md-6 col-sm-12" style={{ margin: "0 auto" }}>
           <div className="card">
-            <p className="error"> {message}</p>
-            <div className="card-body row">
+            {message.length > 0 ? <p className="error"> {message}</p> : null}
+            <div className="row">
+              <div className="col-md-12" style={{ textAlign: "center" }}>
+                <img src={Logo} alt="Oppn Logo" className="img-responsive" />
+              </div>
+            </div>
+            <div className="card-body row row-divided">
               <div className="col-sm social">
                 <h4>Sign Up with your social account</h4>
                 <hr />
@@ -94,6 +99,10 @@ class SignUp extends Component {
                   onClick={() => Auth.federatedSignIn({ provider: "Google" })}
                 />
               </div>
+              {/* <div className="wrapper d-none d-md-block">
+                <div className="text">OR</div>
+              </div> */}
+              <div class="vertical-divider  d-none d-md-block">or</div>
               <div className="col-sm">
                 <form onSubmit={this.submitHandler}>
                   <h3>Let's Connect</h3>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../Styles/login.scss";
 import { Auth } from "aws-amplify";
 import GoogleButton from "react-google-button";
+import Logo from "../../assets/img/logo.png";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +29,11 @@ class Login extends Component {
     Auth.signIn(this.state.email, this.state.password)
       .then((response) => {
         console.log(response);
+        console.log(JSON.stringify(response.keyPrefix));
+        localStorage.setItem(
+          "Token",
+          response.signInUserSession.accessToken.jwtToken
+        );
         this.props.history.push("/dashboard");
       })
       .catch((error) => {
@@ -39,13 +45,14 @@ class Login extends Component {
   render() {
     const { email, password, message } = this.state;
     return (
-      <div className="row">
-        <div className="col-md-3" />
-        <div className="col-md-6 col-sm-12">
+      <div className="row" style={{ margin: "0" }}>
+        <div className="col-md-6 col-sm-12" style={{ margin: "0 auto" }}>
           <div className="card">
-            <p className="error"> {message}</p>
+            {message.length > 0 ? <p className="error"> {message}</p> : null}
             <div className="card-body row">
-              <div className="col-sm" />
+              <div className="col-sm">
+                <img className="img-responsive" src={Logo} alt="Oppn Logo" />
+              </div>
               <div className="col-sm">
                 <form onSubmit={this.submitHandler}>
                   <h3>Let's Connect</h3>

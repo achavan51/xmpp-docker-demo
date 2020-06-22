@@ -3,7 +3,6 @@ import { React, Suspense } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import Spinner from "../components/spinner/spinner";
-// import MainLayout from "../mainLayout";
 
 const AuthRoute = ({ requiredRoles, Component, path, exact = false }) => {
   const isAuthed = !!localStorage.getItem("token");

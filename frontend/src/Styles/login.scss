@@ -42,6 +42,10 @@ body {
     rgba(230, 53, 201, 0.9) 0%,
     rgba(255, 139, 0, 0.9) 89.03%
   );
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .anchor {
@@ -53,4 +57,14 @@ body {
   text-align: center;
   color: #f1399f;
   padding: 0 !important;
+}
+
+.img-responsive {
+  width: 225px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }

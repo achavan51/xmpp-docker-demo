@@ -7,6 +7,7 @@ const SignUp = lazy(() => import("../components/Authentication/signup"));
 const Login = lazy(() => import("../components/Authentication/login"));
 const Dashboard = lazy(() => import("../components/DashBoard/dashboard"));
 const NotFound = lazy(() => import("../views/NotFound"));
+const Onboard = lazy(() => import("../components/Onboard/onboard"));
 
 class Router extends Component {
   render() {
@@ -24,6 +25,14 @@ class Router extends Component {
             render={(props) => (
               <Suspense fallback={<Spinner />}>
                 <Dashboard {...props} />
+              </Suspense>
+            )}
+          />
+          <Route
+            path="/onboard"
+            render={(props) => (
+              <Suspense fallback={<Spinner />}>
+                <Onboard {...props} />
               </Suspense>
             )}
           />

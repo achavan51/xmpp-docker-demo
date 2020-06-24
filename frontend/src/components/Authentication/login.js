@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../Styles/login.scss";
 import { Auth } from "aws-amplify";
+import axios from "axios";
 import GoogleButton from "react-google-button";
 import Logo from "../../assets/img/logo.png";
 class Login extends Component {
@@ -34,7 +35,7 @@ class Login extends Component {
           "Token",
           response.signInUserSession.accessToken.jwtToken
         );
-        this.props.history.push("/dashboard");
+        this.props.history.push("/onboard");
       })
       .catch((error) => {
         console.log("error", error);

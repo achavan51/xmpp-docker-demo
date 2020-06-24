@@ -33,13 +33,13 @@ signUp:
 #         path: send_otp
 #         method: post
 #         cors: true
-# sendMail:
-#   handler: src/api/Auth/Controllers/AuthController.sendMail
-#   events:
-#     - http:
-#         path: send_mail
-#         method: get
-#         cors: true
+sendMail:
+  handler: src/api/Auth/Controllers/AuthController.sendMail
+  events:
+    - http:
+        path: send_mail
+        method: get
+        cors: true
 # changePassword:
 #   handler: src/api/Auth/Controllers/AuthController.changePassword
 #   events:

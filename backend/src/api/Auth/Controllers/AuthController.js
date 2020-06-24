@@ -1,21 +1,8 @@
 let AWS = require("aws-sdk");
 const AuthService = require("../Services/AuthService");
-// var cognitoServiceProvider = new AWS.CognitoIdentityServiceProvider();
-// const AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 dbClient = new AWS.DynamoDB.DocumentClient();
 global.fetch = require("node-fetch");
 require("dotenv").config();
-
-// const table = "consoleShark_verification";
-// const poolData = {
-//   UserPoolId: process.env.UserPoolId,
-//   ClientId: process.env.ClientId,
-// };
-
-// const pool_region = process.env.pool_region;
-// console.log("POOLDATA: ", poolData);
-// const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-// let cognitoUser;
 
 exports.signUp = async (event) => {
   console.log("DATA IN STORE FUNC:", JSON.stringify(event));
@@ -42,10 +29,10 @@ exports.login = async (event) => {
 //   return await AuthService.verifyOtp(data);
 // };
 
-// exports.sendMail = async (event) => {
-//   console.log("event", JSON.stringify(event));
-//   return await AuthService.sendMail(event);
-// };
+exports.sendMail = async (event) => {
+  console.log("event", JSON.stringify(event));
+  return await AuthService.sendMail(event);
+};
 
 // exports.verifyEmail = async (event) => {
 //   console.log("Event", event);

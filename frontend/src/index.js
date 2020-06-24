@@ -4,6 +4,7 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import Amplify, { Auth } from "aws-amplify";
 import Spinner from "./components/spinner/spinner";
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 import awsconfig from "./aws-exports";
 Amplify.configure(awsconfig);
 

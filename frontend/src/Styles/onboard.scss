@@ -14,6 +14,9 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+.padr-0 {
+  padding-right: 0;
+}
 .googlebutton {
   width: inherit !important;
 }
@@ -25,7 +28,7 @@ div form {
   h3 {
     color: #72425f;
   }
-  button {
+  .cus-button {
     background: #20a7f3 !important;
     color: white !important;
     font-size: 16px !important;
@@ -48,11 +51,6 @@ body {
   background-attachment: fixed;
 }
 
-.anchor {
-  color: #ff7a00;
-  text-align: center !important;
-}
-
 .error {
   text-align: center;
   color: #f1399f;
@@ -61,10 +59,5 @@ body {
 
 .img-responsive {
   width: 225px;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  height: auto;
 }

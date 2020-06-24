@@ -100,6 +100,7 @@ class SignUp extends Component {
       })
       .then((response) => {
         console.log(response);
+        this.updateState("confirmation");
       })
       .catch((error) => {
         console.log(error);
@@ -134,7 +135,6 @@ class SignUp extends Component {
       .then((response) => {
         console.log(response);
         this.saveUser(this.state.email, password);
-        this.updateState("confirmation");
       })
       .catch((error) => {
         console.log("error", error);

@@ -1,0 +1,35 @@
+createUser:
+  handler: src/api/User/Controllers/UserController.createUser
+  events:
+    - http:
+        path: create_User
+        method: post
+        cors: true
+getUsers:
+  handler: src/api/User/Controllers/UserController.getUsers
+  events:
+    - http:
+        path: get_Users
+        method: get
+        cors: true
+getUser:
+  handler: src/api/User/Controllers/UserController.getUser
+  events:
+    - http:
+        path: get_User
+        method: get
+        cors: true
+updateUser:
+  handler: src/api/User/Controllers/UserController.updateUser
+  events:
+    - http:
+        path: update_User
+        method: patch
+        cors: true
+deleteUser:
+  handler: src/api/User/Controllers/UserController.deleteUser
+  events:
+    - http:
+        path: delete_User
+        method: delete
+        cors: true

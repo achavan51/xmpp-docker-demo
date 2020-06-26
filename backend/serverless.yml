@@ -12,6 +12,7 @@ provider:
 functions:
   - ${file(src/api/Auth/Routes/routes.yml)}
   - ${file(src/api/User/Routes/routes.yml)}
+  - ${file(src/api/Organization/Routes/routes.yml)}
 
 custom:
   stage: dev

@@ -1,19 +1,3 @@
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  transition: 0.3s;
-  margin: 0 auto;
-  margin-top: 10%;
-  float: none;
-  margin-bottom: 10px;
-  text-align: left;
-  background: linear-gradient(180deg, #f8f5f5 0%, #ffffff 100%);
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
 .googlebutton {
   width: inherit !important;
 }
@@ -36,20 +20,6 @@ form {
   padding: 24px;
 }
 
-body {
-  background: radial-gradient(
-    195.29% 195.35% at 50.34% 110.94%,
-    rgba(230, 53, 201, 0.9) 0%,
-    rgba(255, 139, 0, 0.9) 89.03%
-  );
-  height: 100%;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-h4 {
-  color: #72425f;
-}
 .anchor {
   color: #ff7a00;
   text-align: center !important;
@@ -62,69 +32,6 @@ h4 {
   color: #f1399f;
   padding: 0;
 }
-.vertical-line {
-  float: left;
-  height: 100px;
-  width: 1px;
-  border-right: 1px solid red;
-}
-.vertical-line span {
-  display: block;
-  background: white;
-  padding: 10px;
-  margin: 30px -20px;
-  z-index: 10;
-}
-
-.vertical-divider {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-  padding: 0;
-  width: auto;
-  height: 50%;
-  line-height: 0;
-  text-align: center;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-}
-
-.vertical-divider:before,
-.vertical-divider:after {
-  position: absolute;
-  left: 50%;
-  content: "";
-  z-index: 9;
-  border-left: 1px solid rgba(34, 36, 38, 0.15);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  width: 0;
-  height: calc(100% - 1rem);
-}
-
-.row-divided {
-  position: relative;
-}
-
-.row-divided > [class^="col-"],
-.row-divided > [class*=" col-"] {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.row-divided > .vertical-divider {
-  height: calc(50% - 1rem);
-}
-
-.vertical-divider:before {
-  top: -100%;
-}
-
-.vertical-divider:after {
-  top: auto;
-  bottom: 0;
-}
 
 .img-responsive {
   width: 225px;
@@ -134,4 +41,16 @@ h4 {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+.custom-color {
+  background: radial-gradient(
+    195.29% 195.35% at 50.34% 110.94%,
+    rgba(230, 53, 201, 0.9) 0%,
+    rgba(255, 139, 0, 0.9) 89.03%
+  );
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

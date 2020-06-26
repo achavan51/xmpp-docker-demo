@@ -1,35 +1,35 @@
-createUser:
-  handler: src/api/User/Controllers/UserController.createUser
+createOrganization:
+  handler: src/api/Organization/Controllers/OrganizationController.createOrganization
   events:
     - http:
-        path: create_User
+        path: create_Organization
         method: post
         cors: true
-getUsers:
-  handler: src/api/User/Controllers/UserController.getUsers
+getOrganizations:
+  handler: src/api/Organization/Controllers/OrganizationController.getOrganizations
   events:
     - http:
-        path: get_Users
+        path: get_Organizations
         method: get
         cors: true
-getUser:
-  handler: src/api/User/Controllers/UserController.getUser
+getOrganization:
+  handler: src/api/Organization/Controllers/OrganizationController.getOrganization
   events:
     - http:
-        path: get_User
+        path: get_Organization
         method: get
         cors: true
-updateUser:
-  handler: src/api/User/Controllers/UserController.updateUser
+updateOrganization:
+  handler: src/api/Organization/Controllers/OrganizationController.updateOrganization
   events:
     - http:
-        path: update_User
+        path: update_Organization
         method: patch
         cors: true
-deleteUser:
-  handler: src/api/User/Controllers/UserController.deleteUser
+deleteOrganization:
+  handler: src/api/Organization/Controllers/OrganizationController.deleteOrganization
   events:
     - http:
-        path: delete_User
+        path: delete_Organization
         method: delete
         cors: true

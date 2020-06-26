@@ -111,7 +111,8 @@ class SignUp extends Component {
       .patch("http://localhost:8000/dev/update_User?User_id=" + User_id, data)
       .then((response) => {
         console.log(response);
-        this.props.history.push("/login");
+        localStorage.setItem("User_id", response.data._id);
+        this.props.history.push("/onboard");
       })
       .catch((error) => {
         console.log(error);
@@ -182,7 +183,7 @@ class SignUp extends Component {
   render() {
     const { email, newPassword, message, formType, name } = this.state;
     return (
-      <div className="row" style={{ margin: "0" }}>
+      <div className="row bg-signup" style={{ margin: "0" }}>
         <div className="col-md-6 col-sm-12" style={{ margin: "0 auto" }}>
           <div className="card">
             {message.length > 0 ? <p className="error"> {message}</p> : null}

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const UserSchema = new mongoose.Schema({
+const OrganizationSchema = new mongoose.Schema({
   tenant_name: String,
   account_type: String,
   company_name: String,
-  noOfEmployees: Number,
+  numberOfEmployees: Number,
   User_id: String,
 });
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Organization", OrganizationSchema);

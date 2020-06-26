@@ -1,26 +1,20 @@
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  transition: 0.3s;
-  margin: 0 auto;
-  margin-top: 10%;
-  float: none;
-  margin-bottom: 10px;
-  text-align: left;
-  background: linear-gradient(180deg, #f8f5f5 0%, #ffffff 100%);
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
 .padr-0 {
   padding-right: 0;
 }
 .googlebutton {
   width: inherit !important;
 }
-
+.custom-color {
+  background: radial-gradient(
+    195.29% 195.35% at 50.34% 110.94%,
+    rgba(230, 53, 201, 0.9) 0%,
+    rgba(255, 139, 0, 0.9) 89.03%
+  );
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 div form {
   p {
     color: #8a7281;
@@ -39,25 +33,13 @@ form {
   padding: 30px;
 }
 
-body {
-  background: radial-gradient(
-    195.29% 195.35% at 50.34% 110.94%,
-    rgba(230, 53, 201, 0.9) 0%,
-    rgba(255, 139, 0, 0.9) 89.03%
-  );
-  height: 100%;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 .error {
   text-align: center;
   color: #f1399f;
   padding: 0 !important;
 }
 
-.img-responsive {
+.img-responsive1 {
   width: 225px;
   height: auto;
 }

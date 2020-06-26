@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../Styles/login.scss";
+import "../../Styles/signup.scss";
 import { Auth } from "aws-amplify";
 import axios from "axios";
 import GoogleButton from "react-google-button";
@@ -23,6 +23,21 @@ class Login extends Component {
       message: message,
     });
   };
+  getUser(email) {
+    axios
+      .get("http://localhost:8000/dev/get_User?filter=" + email)
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("User_id", response.data._id);
+        this.props.history.push("/onboard");
+        this.changeHandler({
+          target: { name: "oldPassword", value: response.data.temp_password },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   submitHandler = (e) => {
     e.preventDefault();
@@ -35,7 +50,6 @@ class Login extends Component {
           "Token",
           response.signInUserSession.accessToken.jwtToken
         );
-        this.props.history.push("/onboard");
       })
       .catch((error) => {
         console.log("error", error);
@@ -46,7 +60,7 @@ class Login extends Component {
   render() {
     const { email, password, message } = this.state;
     return (
-      <div className="row" style={{ margin: "0" }}>
+      <div className="row bg-signup" style={{ margin: "0" }}>
         <div className="col-md-6 col-sm-12" style={{ margin: "0 auto" }}>
           <div className="card">
             {message.length > 0 ? <p className="error"> {message}</p> : null}

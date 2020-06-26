@@ -10,8 +10,31 @@ export class onboard extends Component {
       companyName: "",
       numberOfEmployees: "",
       message: "",
+      account_type: "",
     };
   }
+  changeHandler = (e) => {
+    console.log("change", e.target.value);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  submitHandler = (e) => {
+    e.preventDefault();
+    console.log(this.state);
+    const User_id = localStorage.getItem("User_id");
+    // axios
+    //   .post("http://localhost:8000/dev/create_Organization", {
+    //     email: email,
+    //     temp_password: password,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.updateState("confirmation");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  };
   render() {
     const {
       email,
@@ -19,22 +42,27 @@ export class onboard extends Component {
       numberOfEmployees,
       tenantName,
       message,
+      account_type,
     } = this.state;
+
     return (
-      <div className="row" style={{ margin: "0" }}>
+      <div className="row bg-onboard " style={{ margin: "0" }}>
         <div className="col-md-6 col-sm-12" style={{ margin: "0 auto" }}>
           <div className="card">
             {message.length > 0 ? <p className="error"> {message}</p> : null}
             <div className="row">
               <div className="col-md-12" style={{ textAlign: "center" }}>
-                <img src={Logo} alt="Oppn Logo" className="img-responsive" />
+                <img src={Logo} alt="Oppn Logo" className="img-responsive1" />
               </div>
             </div>
             <div className="card-body row">
               <div className="col-sm">
                 <form onSubmit={this.submitHandler}>
                   <div className="form-group row">
-                    <label for="tenantName" className="col-sm-3 col-form-label">
+                    <label
+                      htmlFor="tenantName"
+                      className="col-sm-3 col-form-label"
+                    >
                       Tenant Name
                     </label>
                     <div className="col-sm-7 padr-0">
@@ -61,25 +89,36 @@ export class onboard extends Component {
                         className="btn-group btn-group-toggle"
                         data-toggle="buttons"
                       >
-                        <label className="btn btn-secondary active">
+                        <label
+                          className="btn btn-secondary active"
+                          className={
+                            this.state.active ? "your_className" : null
+                          }
+                        >
                           <input
                             type="radio"
-                            name="options"
+                            name="account_type"
                             id="option1"
                             autoComplete="off"
+                            value={"Personal"}
+                            onChange={this.changeHandler}
+                            checked={"Personal" === account_type}
                             checked
                           />
-                          <i class="fa fa-user-o" aria-hidden="true" />_
+                          <i className="fa fa-user-o" aria-hidden="true" />_
                           Personal
                         </label>
                         <label className="btn btn-secondary">
                           <input
                             type="radio"
-                            name="options"
+                            name="account_type"
                             id="option2"
                             autoComplete="off"
+                            value={"Company"}
+                            onChange={this.changeHandler}
+                            checked={"Company" === account_type}
                           />
-                          <i class="fa fa-building-o" aria-hidden="true" />_
+                          <i className="fa fa-building-o" aria-hidden="true" />_
                           Company
                         </label>
                       </div>
@@ -87,7 +126,7 @@ export class onboard extends Component {
                   </div>
                   <div className="form-group row">
                     <label
-                      for="companyName"
+                      htmlFor="companyName"
                       className="col-sm-3 col-form-label"
                     >
                       Company Name
@@ -136,7 +175,10 @@ export class onboard extends Component {
                           id="inlineRadio1"
                           value="option1"
                         />
-                        <label className="form-check-label" for="inlineRadio1">
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineRadio1"
+                        >
                           Google
                         </label>
                       </div>
@@ -148,7 +190,10 @@ export class onboard extends Component {
                           id="inlineRadio2"
                           value="option2"
                         />
-                        <label className="form-check-label" for="inlineRadio2">
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineRadio2"
+                        >
                           Microsoft
                         </label>
                       </div>
@@ -156,7 +201,7 @@ export class onboard extends Component {
                   </div>
                   <div className="form-group row">
                     <label
-                      for="email"
+                      htmlFor="email"
                       className="col-sm-3 col-form-label padr-0"
                     >
                       Invite team member
@@ -178,7 +223,7 @@ export class onboard extends Component {
                       Get a link to invite
                     </label>
                     <div className="col-sm-4">
-                      <button type="button" class="btn btn-link">
+                      <button type="button" className="btn btn-link">
                         <i className="fa fa-link" />
                       </button>
                     </div>

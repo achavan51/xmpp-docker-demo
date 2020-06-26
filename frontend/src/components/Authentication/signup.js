@@ -171,8 +171,6 @@ class SignUp extends Component {
         console.log(response);
         let User_id = localStorage.getItem("User_id");
         this.updateUser(User_id, { name: this.state.name });
-        // this.props.history.push("/login");
-        // this.updateState("signup");
       })
       .catch((error) => {
         console.log("error", error);

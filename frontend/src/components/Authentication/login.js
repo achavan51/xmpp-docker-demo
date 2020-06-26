@@ -30,9 +30,6 @@ class Login extends Component {
         console.log(response);
         localStorage.setItem("User_id", response.data._id);
         this.props.history.push("/onboard");
-        this.changeHandler({
-          target: { name: "oldPassword", value: response.data.temp_password },
-        });
       })
       .catch((error) => {
         console.log(error);
@@ -50,6 +47,7 @@ class Login extends Component {
           "Token",
           response.signInUserSession.accessToken.jwtToken
         );
+        this.getUser(this.state.email);
       })
       .catch((error) => {
         console.log("error", error);

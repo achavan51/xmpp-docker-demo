@@ -1,46 +1,54 @@
 import React, { Component } from "react";
 import "../../Styles/onboard.scss";
+import axios from "axios";
 import Logo from "../../assets/img/logo.png";
 export class onboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      tenantName: "",
-      companyName: "",
+      tenant_name: "",
+      company_name: "",
       numberOfEmployees: "",
-      message: "",
       account_type: "",
+      message: "",
+      active: true,
     };
   }
   changeHandler = (e) => {
-    console.log("change", e.target.value);
     this.setState({ [e.target.name]: e.target.value });
+  };
+  changeClass = () => {
+    this.setState({
+      active: !this.state.active,
+    });
   };
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    const formData = new FormData(e.target);
+    formData.set("tenant_name", formData.get("tenant_name") + ".Opnn.co");
     const User_id = localStorage.getItem("User_id");
-    // axios
-    //   .post("http://localhost:8000/dev/create_Organization", {
-    //     email: email,
-    //     temp_password: password,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.updateState("confirmation");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    formData.append("User_id", User_id);
+    var object = {};
+    formData.forEach((value, key) => {
+      object[key] = value;
+    });
+    axios
+      .post("http://localhost:8000/dev/create_Organization", object)
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/invite");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   render() {
     const {
-      email,
-      companyName,
+      company_name,
       numberOfEmployees,
-      tenantName,
+      tenant_name,
       message,
       account_type,
     } = this.state;
@@ -60,39 +68,45 @@ export class onboard extends Component {
                 <form onSubmit={this.submitHandler}>
                   <div className="form-group row">
                     <label
-                      htmlFor="tenantName"
+                      htmlFor="tenant_name"
                       className="col-sm-3 col-form-label"
                     >
                       Tenant Name
                     </label>
-                    <div className="col-sm-7 padr-0">
+                    <div className="col-sm-9 input-group mb-3">
                       <input
                         className="form-control"
                         placeholder="Enter Tenant Name"
-                        id="tenantName"
+                        id="tenant_name"
                         type="text"
-                        name="tenantName"
-                        value={tenantName}
+                        name="tenant_name"
+                        value={tenant_name}
                         onChange={this.changeHandler}
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
                       />
-                    </div>
-                    <div className="col-sm-2 padr-0">
-                      <h5>.Opnn.co</h5>
+                      <div className="input-group-append">
+                        <span className="input-group-text" id="basic-addon2">
+                          .Opnn.co
+                        </span>
+                      </div>
                     </div>
                   </div>
+
                   <div className="form-group row">
                     <label className="col-sm-3 col-form-label">
                       Account Type
                     </label>
-                    <div className="col-sm-7 padr-0">
+                    <div className="col-sm-9 mb-3">
                       <div
                         className="btn-group btn-group-toggle"
                         data-toggle="buttons"
                       >
                         <label
-                          className="btn btn-secondary active"
                           className={
-                            this.state.active ? "your_className" : null
+                            this.state.active
+                              ? "btn btn-secondary active"
+                              : "btn btn-secondary "
                           }
                         >
                           <input
@@ -103,12 +117,18 @@ export class onboard extends Component {
                             value={"Personal"}
                             onChange={this.changeHandler}
                             checked={"Personal" === account_type}
-                            checked
+                            onClick={this.changeClass}
                           />
                           <i className="fa fa-user-o" aria-hidden="true" />_
                           Personal
                         </label>
-                        <label className="btn btn-secondary">
+                        <label
+                          className={
+                            this.state.active
+                              ? "btn btn-secondary"
+                              : "btn btn-secondary active"
+                          }
+                        >
                           <input
                             type="radio"
                             name="account_type"
@@ -116,6 +136,7 @@ export class onboard extends Component {
                             autoComplete="off"
                             value={"Company"}
                             onChange={this.changeHandler}
+                            onClick={this.changeClass}
                             checked={"Company" === account_type}
                           />
                           <i className="fa fa-building-o" aria-hidden="true" />_
@@ -124,110 +145,53 @@ export class onboard extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="companyName"
-                      className="col-sm-3 col-form-label"
-                    >
-                      Company Name
-                    </label>
-                    <div className="col-sm-7 padr-0">
-                      <input
-                        className="form-control"
-                        placeholder="Enter Company Name"
-                        id="companyName"
-                        type="text"
-                        name="companyName"
-                        value={companyName}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-sm-3 col-form-label padr-0">
-                      Employees
-                    </label>
-                    <div className="col-sm-7 padr-0">
-                      <input
-                        className="form-control"
-                        placeholder="Enter Number of Employees"
-                        id="numberOfEmployees"
-                        type="text"
-                        name="numberOfEmployees"
-                        value={numberOfEmployees}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-sm-3 col-form-label padr-0">
-                      Invite team
-                    </label>
-                    <div className="col-sm-7">
-                      <div
-                        className="form-check form-check-inline"
-                        style={{ paddingTop: "10px" }}
-                      >
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="inlineRadioOptions"
-                          id="inlineRadio1"
-                          value="option1"
-                        />
+                  {this.state.account_type === "Company" ? (
+                    <div>
+                      <div className="form-group row">
                         <label
-                          className="form-check-label"
-                          htmlFor="inlineRadio1"
+                          htmlFor="company_name"
+                          className="col-sm-3 col-form-label"
                         >
-                          Google
+                          Company Name
                         </label>
+                        <div className="col-sm-9 mb-3">
+                          <input
+                            className="form-control"
+                            placeholder="Enter Company Name"
+                            id="company_name"
+                            type="text"
+                            name="company_name"
+                            value={company_name}
+                            onChange={this.changeHandler}
+                          />
+                        </div>
                       </div>
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="inlineRadioOptions"
-                          id="inlineRadio2"
-                          value="option2"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineRadio2"
-                        >
-                          Microsoft
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">
+                          Employees
                         </label>
+                        <div className="col-sm-9 mb-3">
+                          <select
+                            className="form-control"
+                            placeholder="Enter Number of Employees"
+                            id="numberOfEmployees"
+                            name="numberOfEmployees"
+                            onChange={this.changeHandler}
+                            value={numberOfEmployees}
+                          >
+                            <option value="" defaultValue>
+                              Please select
+                            </option>
+                            <option value="99">10 to 99</option>
+                            <option value="999">100 to 999</option>
+                            <option value="9999">1000 to 9999</option>
+                            <option value="9999">10000 to 99999</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="email"
-                      className="col-sm-3 col-form-label padr-0"
-                    >
-                      Invite team member
-                    </label>
-                    <div className="col-sm-7 padr-0">
-                      <input
-                        className="form-control"
-                        placeholder="Enter Email"
-                        id="email"
-                        type="text"
-                        name="email"
-                        value={email}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-sm-3 col-form-label">
-                      Get a link to invite
-                    </label>
-                    <div className="col-sm-4">
-                      <button type="button" className="btn btn-link">
-                        <i className="fa fa-link" />
-                      </button>
-                    </div>
-                  </div>
+                  ) : null}
+
                   <button
                     className="btn btn-lg btn-block cus-button"
                     type="submit"

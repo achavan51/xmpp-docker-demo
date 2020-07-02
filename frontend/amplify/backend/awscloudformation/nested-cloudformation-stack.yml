@@ -114,10 +114,10 @@
 					"usernameAttributes": "email",
 					"userPoolGroupList": "",
 					"dependsOn": "",
-					"hostedUIDomainName": "frontendd8c7dce2-d8c7dce2",
+					"hostedUIDomainName": "frontend83dd9b0a-83dd9b0a",
 					"authProvidersUserPool": "Google",
 					"hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-					"oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/dashboard/\"],\"LogoutURLs\":[\"http://localhost:3000/login/\"]}",
+					"oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/onboard/\"],\"LogoutURLs\":[\"http://localhost:3000/login/\"]}",
 					"hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"1077005870534-2p329g4lblkstgbacoguhvcatf0f6dq3.apps.googleusercontent.com\",\"client_secret\":\"VMjZ15aUQiWsxe3Ds2l-vDmu\"}]",
 					"env": "dev"
 				}

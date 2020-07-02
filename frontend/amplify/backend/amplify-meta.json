@@ -22,19 +22,19 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-frontend-dev-195329-deployment/amplify-cfn-templates/auth/frontendd06fe2a6-cloudformation-template.yml",
 				"logicalId": "authfrontendd06fe2a6"
 			},
-			"lastPushTimeStamp": "2020-06-19T14:49:06.075Z",
+			"lastPushTimeStamp": "2020-07-02T07:29:54.419Z",
 			"output": {
 				"AppClientSecret": "1hevh0fm0kec4pi19ifr93uv7hjmk287vsbg4kuit2l0547tej39",
 				"UserPoolId": "us-east-1_RbCH6Gg5r",
 				"AppClientIDWeb": "32jugkmc60lglq98r24kf6r44a",
 				"AppClientID": "6d6d4g56mtqbr4sgra8pfla96a",
-				"HostedUIDomain": "frontendd8c7dce2-d8c7dce2-dev",
+				"HostedUIDomain": "frontend83dd9b0a-83dd9b0a-dev",
 				"IdentityPoolId": "us-east-1:ef6a98f7-54d7-4981-8234-d7dc3f5951ba",
 				"IdentityPoolName": "frontendd06fe2a6_identitypool_d06fe2a6__dev",
-				"OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/dashboard/\"],\"LogoutURLs\":[\"http://localhost:3000/login/\"]}",
+				"OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/onboard/\"],\"LogoutURLs\":[\"http://localhost:3000/login/\"]}",
 				"UserPoolName": "frontendd06fe2a6_userpool_d06fe2a6"
 			},
-			"lastPushDirHash": "YD7vXM6R15curkPzuH5b//U+4wA="
+			"lastPushDirHash": "MSh3o3GKZAelG6D5pZhkBTPMe0s="
 		}
 	}
 }

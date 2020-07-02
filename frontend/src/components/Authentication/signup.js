@@ -156,9 +156,6 @@ class SignUp extends Component {
   };
   updatePassword = () => {
     Auth.signIn(this.state.email, this.state.oldPassword)
-      .then((res) => {
-        return Auth.currentAuthenticatedUser();
-      })
       .then((user) => {
         console.log("user", user);
         return Auth.changePassword(

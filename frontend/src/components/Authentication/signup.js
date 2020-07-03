@@ -80,12 +80,15 @@ class SignUp extends Component {
   };
   getUser(email) {
     axios
-      .get("http://localhost:8000/dev/get_User?filter=" + email)
+      .get("http://localhost:3000/userOrgAdmin/getUser?filter=" + email)
       .then((response) => {
         console.log(response);
         localStorage.setItem("User_id", response.data._id);
         this.changeHandler({
-          target: { name: "oldPassword", value: response.data.temp_password },
+          target: {
+            name: "oldPassword",
+            value: response.data.temp_password,
+          },
         });
       })
       .catch((error) => {
@@ -94,7 +97,7 @@ class SignUp extends Component {
   }
   saveUser(email, password) {
     axios
-      .post("http://localhost:8000/dev/create_User", {
+      .post("http://localhost:3000/userOrgAdmin/createUser", {
         email: email,
         temp_password: password,
       })
@@ -108,7 +111,10 @@ class SignUp extends Component {
   }
   updateUser(User_id, data) {
     axios
-      .patch("http://localhost:8000/dev/update_User?User_id=" + User_id, data)
+      .patch(
+        "http://localhost:3000/userOrgAdmin/updateUser?User_id=" + User_id,
+        data
+      )
       .then((response) => {
         console.log(response);
         localStorage.setItem("User_id", response.data._id);
@@ -167,7 +173,7 @@ class SignUp extends Component {
       .then((response) => {
         console.log(response);
         let User_id = localStorage.getItem("User_id");
-        this.updateUser(User_id, { name: this.state.name });
+        this.updateUser(User_id, { profile: { name: this.state.name } });
       })
       .catch((error) => {
         console.log("error", error);

@@ -25,10 +25,11 @@ class Login extends Component {
   };
   getUser(email) {
     axios
-      .get("http://localhost:8000/dev/get_User?filter=" + email)
+      .get("http://localhost:3000/userOrgAdmin/getUser?filter=" + email)
       .then((response) => {
         console.log(response);
         localStorage.setItem("User_id", response.data._id);
+        localStorage.setItem("email", response.data.email);
         this.props.history.push("/onboard");
       })
       .catch((error) => {

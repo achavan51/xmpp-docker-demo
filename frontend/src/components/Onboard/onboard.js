@@ -2,19 +2,50 @@ import React, { Component } from "react";
 import "../../Styles/onboard.scss";
 import axios from "axios";
 import Logo from "../../assets/img/logo.png";
+import { Auth } from "aws-amplify";
 export class onboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      tenant_name: "",
+      orgName: "",
       company_name: "",
       numberOfEmployees: "",
       account_type: "",
       message: "",
       active: true,
     };
+
+    Auth.currentSession()
+      .then((response) => {
+        console.log(response);
+        // this.props.history.push("/invite");
+        console.log("email", response.idToken.payload.email);
+        this.getUser(response.idToken.payload.email);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+  getUser(email) {
+    axios
+      .get("http://localhost:3000/userOrgAdmin/getUser?filter=" + email)
+      .then((response) => {
+        console.log(response);
+        if (response.data !== "") {
+          localStorage.setItem("User_id", response.data._id);
+          localStorage.setItem("email", response.data.email);
+          console.log(response.data);
+          if (response.data.orgId) {
+            // this.props.history.push("/dashboard");
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -27,15 +58,28 @@ export class onboard extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    formData.set("tenant_name", formData.get("tenant_name") + ".Opnn.co");
+    formData.set("orgName", formData.get("orgName") + ".Opnn.co");
     const User_id = localStorage.getItem("User_id");
-    formData.append("User_id", User_id);
+    const email = localStorage.getItem("email");
+    formData.append("userName", email);
+    formData.append("admins", [{ userId: User_id }]);
+    formData.append("usersThatCanInvite", [{ userId: User_id }]);
     var object = {};
     formData.forEach((value, key) => {
       object[key] = value;
     });
+    const config = {
+      headers: {
+        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1OTMyMDYzMjYsImV4cCI6MTYyNDc0MjMyNiwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoidGVzdHNpZ251cEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6InRlc3QiLCJTdXJuYW1lIjoic2lnbnVwIiwiRW1haWwiOiJ0ZXN0c2lnbnVwQGV4YW1wbGUuY29tIiwiUm9sZSI6WyJNYW5hZ2VyIiwiUHJvamVjdCBBZG1pbmlzdHJhdG9yIl19.e3exTvjRUGtBhcbFl7uOsu-2Y94WOfOMLyS7RMaJF4o`,
+      },
+    };
+
     axios
-      .post("http://localhost:8000/dev/create_Organization", object)
+      .post(
+        "http://127.0.0.1:3000/userOrgAdmin/createUserAndOrg",
+        object,
+        config
+      )
       .then((response) => {
         console.log(response);
         this.props.history.push("/invite");
@@ -48,7 +92,7 @@ export class onboard extends Component {
     const {
       company_name,
       numberOfEmployees,
-      tenant_name,
+      orgName,
       message,
       account_type,
     } = this.state;
@@ -68,7 +112,7 @@ export class onboard extends Component {
                 <form onSubmit={this.submitHandler}>
                   <div className="form-group row">
                     <label
-                      htmlFor="tenant_name"
+                      htmlFor="orgName"
                       className="col-sm-3 col-form-label"
                     >
                       Tenant Name
@@ -77,10 +121,10 @@ export class onboard extends Component {
                       <input
                         className="form-control"
                         placeholder="Enter Tenant Name"
-                        id="tenant_name"
+                        id="orgName"
                         type="text"
-                        name="tenant_name"
-                        value={tenant_name}
+                        name="orgName"
+                        value={orgName}
                         onChange={this.changeHandler}
                         aria-label="Recipient's username"
                         aria-describedby="basic-addon2"
@@ -182,10 +226,11 @@ export class onboard extends Component {
                             <option value="" defaultValue>
                               Please select
                             </option>
-                            <option value="99">10 to 99</option>
-                            <option value="999">100 to 999</option>
-                            <option value="9999">1000 to 9999</option>
-                            <option value="9999">10000 to 99999</option>
+                            <option value="49">0-49</option>
+                            <option value="99">50-99</option>
+                            <option value="149">100-149</option>
+                            <option value="199">150-199</option>
+                            <option value="9999">200+</option>
                           </select>
                         </div>
                       </div>
